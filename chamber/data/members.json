@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Comercio Konecta",
+      "address": "Av. Principal 123, Córdoba",
+      "phone": "+54 351 123 4567",
+      "website": "https://comercio1.com",
+      "image": "images/comercio1.jpg",
+      "membership": 3
+    },
+    {
+      "name": "Empresa ClaroArgentina",
+      "address": "Calle Secundaria 456, Córdoba",
+      "phone": "+54 351 987 6543",
+      "website": "https://empresa2.com",
+      "image": "images/empresa2.jpg",
+      "membership": 2
+    },
+    {
+      "name": "Negocio Electrolux",
+      "address": "Bv. Comercio 789, Córdoba",
+      "phone": "+54 351 456 7890",
+      "website": "https://negocio3.com",
+      "image": "images/negocio3.jpg",
+      "membership": 1
+    }
+  ]
+  

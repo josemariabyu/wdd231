@@ -1,4 +1,2 @@
-// scripts/navigation.js
-document.getElementById('menu-toggle').addEventListener('click', function() {
-    document.getElementById('menu').classList.toggle('hidden');
-});
+document.getElementById("currentyear").textContent = new Date().getFullYear();
+document.getElementById("lastModified").textContent = "Última actualización: " + document.lastModified;

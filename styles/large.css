@@ -1,13 +1,32 @@
 /* styles/large.css */
+
 @media (min-width: 768px) {
-    #menu {
-        display: block;
-    }
-    #menu ul {
-        display: flex;
-        justify-content: center;
-    }
-    #menu a {
-        margin: 0 1rem;
-    }
+  main {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  #courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .course-card {
+    flex: 1 1 calc(50% - 1rem);
+    box-sizing: border-box;
+  }
+
+  header {
+    justify-content: space-between;
+  }
+
+  nav ul {
+    display: flex !important;
+    gap: 1rem;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
 }
