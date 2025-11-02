@@ -1,32 +1,61 @@
-/* styles/large.css */
+/* ---------- LARGE.CSS ---------- */
 
+/* Media query para pantallas grandes */
 @media (min-width: 768px) {
-  main {
-    max-width: 1000px;
-    margin: auto;
-  }
-
-  #courses {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .course-card {
-    flex: 1 1 calc(50% - 1rem);
-    box-sizing: border-box;
-  }
-
   header {
-    justify-content: space-between;
-  }
-
-  nav ul {
-    display: flex !important;
+    justify-content: flex-start;
     gap: 1rem;
   }
 
   #menu-toggle {
-    display: none;
+    display: none; /* Oculta el botón hamburguesa */
   }
+
+  #menu {
+    display: flex !important;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  #menu li {
+    border: none;
+  }
+
+  #menu li a {
+    padding: 0.5rem 1rem;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: auto;
+    text-align: left;
+  }
+
+  .course-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .featured img {
+    width: 100%;
+    height: auto;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-links {
+    margin-bottom: 0.5rem;
+  }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section {
+  max-width: 900px;
+  width: 100%;
 }

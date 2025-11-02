@@ -1,88 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página de inicio del curso WDD231">
-    <meta name="author" content="Jose Maria Sanabria">
-    <title>Página de Inicio - WDD231</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nova+Cut&family=Sunflower:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/small.css">
-    <link rel="stylesheet" href="styles/large.css">
-    
-    <script src="scripts/navigation.js" defer></script>
-    <script src="scripts/date.js" defer></script>
-    <script src="scripts/course.js" defer></script>
-        
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Página de inicio del curso WDD231 por Jose Maria Sanabria" />
+  <meta name="author" content="Jose Maria Sanabria" />
+  <title>Página de Inicio - WDD231</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Cut&family=Sunflower:wght@300&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles/normalize.css" />
+  <link rel="stylesheet" href="styles/small.css" />
+  <link rel="stylesheet" href="styles/large.css" />
+
+  <!-- Scripts -->
+  <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/date.js" defer></script>
+  <script src="scripts/course.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <img src="images/perfil_linked.jpeg" alt="Foto de perfil de Jose Maria Sanabria">
-        <span>Jose Maria Sanabria</span>
-        <nav>
-            <button id="menu-toggle" aria-label="Abrir menú">☰</button>
-            <ul id="menu" class="hidden">
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="#">Cámara</a></li>
-                <li><a href="https://github.com/josemariabyu" target="_blank">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/jose-maria-sanabria-7a65b2ba" target="_blank">LinkedIn</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <img src="images/logo.svg.png" alt="Logo del sitio" width="60" height="60" />
+    <span>Jose Maria Sanabria</span>
 
-    <main>
-        <h1>Bienvenido a la Página de Inicio</h1>
+    <nav>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul id="menu" class="hidden">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="#">Cámara</a></li>
+        <li><a href="#">Final</a></li>
+        <li><a href="https://github.com/josemariabyu" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/jose-maria-sanabria-7a65b2ba" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <section>
-            <h2>Información General</h2>
-            <p>Esta página contiene información relevante sobre el curso Cámara de Comercio.</p>
-        </section>
+  <main>
+    <h1>Bienvenido a la Página de Inicio</h1>
 
-        <section class="featured">
-            <h2>Villa General Belgrano, Córdoba</h2>
-            <img src="images/villaGB.jpg" alt="Villa General Belgrano" loading="lazy">
-        </section>
+    <section>
+      <h2>Información General</h2>
+      <p>Esta página contiene información relevante sobre el curso Cámara de Comercio y mis proyectos del curso WDD231.</p>
+    </section>
 
+    <section class="featured">
+      <h2>Villa General Belgrano, Córdoba</h2>
+      <img src="images/villaGB.jpg" alt="Vista panorámica de Villa General Belgrano, Córdoba" loading="lazy" />
+    </section>
 
-        <section>
-            <h2>Cursos</h2>
-            <div id="filter-buttons">
-                <button onclick="filterCourses('all')">Todos</button>
-                <button onclick="filterCourses('WDD')">WDD</button>
-                <button onclick="filterCourses('CSE')">CSE</button>
-            </div>
-            <div id="courses" class="course-container">
-             <div class= "course-card WDD">
-                 <h3>WDD 110</h3>
-                 <p>Web Foundations</p>
-            </div>
-            <div class="course-card WDD">
-             <h3>WDD 130</h3>
-             <p>Web Fundamentals</p>
-            </div>
-            <div class="course-card CSE">
-                 <h3>CSE 110</h3>
-                 <p>Programming Basics</p>
-            </div>
-            <div class="course-card CSE">
-                 <h3>CSE 210</h3>
-                 <p>Software Design</p>
-             </div>
-         </div>
+    <section>
+      <h2>Cursos</h2>
+      <div id="filter-buttons">
+        <button onclick="filterCourses('all')">Todos</button>
+        <button onclick="filterCourses('WDD')">WDD</button>
+        <button onclick="filterCourses('CSE')">CSE</button>
+      </div>
 
+      <div id="courses" class="course-container">
+        <div class="course-card WDD">
+          <h3>WDD 110</h3>
+          <p>Web Foundations</p>
+        </div>
+        <div class="course-card WDD">
+          <h3>WDD 130</h3>
+          <p>Web Fundamentals</p>
+        </div>
+        <div class="course-card CSE">
+          <h3>CSE 110</h3>
+          <p>Programming Basics</p>
+        </div>
+        <div class="course-card CSE">
+          <h3>CSE 210</h3>
+          <p>Software Design</p>
+        </div>
+      </div>
+    </section>
 
-        <section>
-            <h2>Contacto</h2>
-            <p>Puedes contactarme a través de mis redes sociales.</p>
-        </section>
-    </main>
+    <section>
+      <h2>Contacto</h2>
+      <p>Puedes contactarme a través de mis redes sociales o enviarme un mensaje directo en LinkedIn.</p>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; <span id="currentyear"></span> Jose Maria Sanabria - Córdoba, Argentina</p>
-        <p id="lastModified"></p>
-    </footer>
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/josemariabyu" target="_blank" rel="noopener" aria-label="GitHub"><img src="images/github.png" alt="GitHub" width="24" /></a>
+      <a href="https://linkedin.com/in/jose-maria-sanabria-7a65b2ba" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="images/linkedin.png" alt="LinkedIn" width="24" /></a>
+      <a href="#" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram" width="24" /></a>
+    </div>
+    <p>&copy; <span id="currentyear"></span> Jose Maria Sanabria - Córdoba, Argentina</p>
+    <p id="lastModified"></p>
+  </footer>
 </body>
 </html>
