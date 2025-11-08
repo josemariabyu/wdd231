@@ -1,26 +1,131 @@
-#members {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+/* GENERAL */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f8;
 }
 
+/* HEADER */
+header {
+    background: #3084d7;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+/* Botón hamburguesa */
+#menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none; /* Solo móvil */
+}
+
+/* NAV */
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav ul li a.active {
+    text-decoration: underline;
+}
+
+/* MOBILE NAV */
+@media (max-width: 760px) {
+
+    #menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        background: #1f6dbc;
+        padding: 1rem;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+}
+
+/* MAIN */
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 1rem;
+}
+
+/* BOTONES GRID/LIST */
+.view-buttons {
+    margin-bottom: 1rem;
+}
+
+button {
+    margin-right: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: #176fc7;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #1c69b5;
+}
+
+/* GRID VIEW */
+#members.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* LIST VIEW */
+#members.list {
+    display: block;
+}
+
+/* MEMBER CARD */
 .member-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background: white;
     padding: 15px;
+    border-radius: 8px;
     text-align: center;
-    background: #fff;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
 }
 
 .member-card img {
-    max-width: 100px;
-    height: auto;
+    max-width: 120px;
     margin-bottom: 10px;
 }
 
-.membership-level {
-    font-weight: bold;
-    color: #d4af37; /* Oro */
+/* FOOTER */
+footer {
+    background: #145aa0;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
 }

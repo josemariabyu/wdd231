@@ -7,8 +7,9 @@
     <meta name="author" content="Jose Maria Sanabria">
     <meta property="og:title" content="Directorio - Cámara de Comercio">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="URL_de_una_imagen">
-    <meta property="og:url" content="URL_DE_TU_PAGINA">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://josemariabyu.github.io/wdd231/chamber/directory.html">
+
     <title>Directorio - Cámara de Comercio</title>
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/normalize.css">
@@ -16,21 +17,29 @@
 </head>
 <body>
     <header>
-        <h1>Cámara de Comercio de Córdoba</h1>
-        <nav>
-            <ul>
+       <h1>Cámara de Comercio de Córdoba</h1>
+
+       <button id="menu-btn" aria-label="Abrir menú">&#9776;</button>
+
+       <nav id="menu" class="hidden" role="navigation">
+          <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="discover.html">Descubrir</a></li>
-                <li><a href="directory.html">Directorio</a></li>
+                <li><a class="active" href="directory.html">Directorio</a></li>
                 <li><a href="join.html">Únete</a></li>
-            </ul>
-        </nav>
+          </ul>
+      </nav>
     </header>
     
-    <main>
+     <main>
         <h2>Directorio de Miembros</h2>
-        <button id="toggleView">Cambiar Vista</button>
-        <div id="members" class="grid-view"></div>
+
+        <div class="view-buttons">
+            <button id="gridBtn">Grid</button>
+            <button id="listBtn">Lista</button>
+        </div>
+
+        <div id="members" class="grid"></div>
     </main>
      
     
