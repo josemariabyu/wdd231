@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de inicio de la Cámara de Comercio de Córdoba, Argentina">
+    <meta name="author" content="Jose Maria Sanabria">
+    <meta property="og:title" content="Cámara de Comercio de Córdoba">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://josemariabyu.github.io/wdd231/chamber/index.html">
+
+    <title>Inicio - Cámara de Comercio de Córdoba</title>
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Cámara de Comercio de Córdoba</h1>
+
+        <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+        <nav id="menu" class="hidden" role="navigation">
+            <ul>
+                <li><a class="active" href="index.html">Inicio</a></li>
+                <li><a href="discover.html">Descubrir</a></li>
+                <li><a href="directory.html">Directorio</a></li>
+                <li><a href="join.html">Únete</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO ÚNICO Y CORRECTO -->
+        <section class="hero">
+            <picture>
+                <source srcset="images/hero-large.jpg" media="(min-width: 768px)">
+                <img src="images/hero-small.jpg" alt="Vista panorámica de Córdoba" class="hero-img">
+            </picture>
+
+            <div class="hero-text">
+                <h2>Impulsando el Comercio Local</h2>
+                <p>Conectamos empresas, fomentamos oportunidades y fortalecemos la comunidad empresarial cordobesa.</p>
+                <a href="join.html" class="cta-btn">Únete a la Cámara</a>
+            </div>
+        </section>
+
+        <!-- CURRENT EVENTS -->
+        <section class="events">
+            <h2>Próximos Eventos</h2>
+            <ul>
+                <li><strong>15 Nov:</strong> Feria de Emprendedores Locales</li>
+                <li><strong>22 Nov:</strong> Taller de Marketing Digital para PYMES</li>
+                <li><strong>5 Dic:</strong> Cena Anual de la Cámara</li>
+            </ul>
+        </section>
+
+        <!-- WEATHER -->
+        <section class="weather">
+            <h2>Clima en Córdoba</h2>
+            <div id="weather-info">
+                <p><strong>Temperatura actual:</strong> <span id="current-temp"></span>°C</p>
+                <p><strong>Condición:</strong> <span id="weather-desc"></span></p>
+
+                <h3>Pronóstico de 3 días</h3>
+                <ul id="forecast"></ul>
+            </div>
+        </section>
+
+        <!-- SPOTLIGHT -->
+        <section class="spotlights">
+            <h2>Empresas Destacadas</h2>
+            <div id="spotlight-container" class="spotlight-grid"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Cámara de Comercio de Córdoba | Jose Maria Sanabria | WDD 231</p>
+        <p>Última modificación: <span id="lastModified"></span></p>
+    </footer>
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
+    <script src="scripts/spotlights.js" defer></script>
+</body>
+</html>
