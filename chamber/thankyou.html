@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Gracias por solicitar unirse a la Cámara de Comercio de Córdoba" />
+  <title>Gracias - Cámara de Comercio de Córdoba</title>
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/style.css">
+
+  <style>
+    .thank-card {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .summary-list {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+    .summary-list dt { font-weight:700; color:var(--primary); }
+    .summary-list dd { margin:0 0 0.6rem 0; }
+    .notice { margin-top: 1rem; color:#333; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cámara de Comercio de Córdoba</h1>
+    <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+    <nav id="menu" class="hidden" role="navigation">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="discover.html">Descubrir</a></li>
+        <li><a href="directory.html">Directorio</a></li>
+        <li><a href="join.html" class="active" aria-current="page">Únete</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="thank-card" role="region" aria-labelledby="thanks-title">
+      <h2 id="thanks-title">¡Gracias por tu solicitud!</h2>
+      <p>Hemos recibido tu formulario. A continuación repasamos la información que enviaste:</p>
+
+      <dl class="summary-list" id="summary">
+        <!-- JS insertará los valores requeridos aquí -->
+      </dl>
+
+      <p class="notice">Si necesitas cambiar algún dato, volvé a la página de <a href="join.html">solicitud</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Cámara de Comercio de Córdoba | Jose Maria Sanabria</p>
+  </footer>
+
+  <script>
+    // menu (same behavior)
+    (function(){
+      const menuBtn = document.getElementById('menu-btn');
+      const navMenu = document.getElementById('menu');
+      if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+          const isHidden = navMenu.classList.toggle('hidden');
+          menuBtn.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+      }
+    })();
+
+    // parse query params and show required fields
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+
+      const requiredFields = [
+        { key: 'firstName', label: 'Nombre' },
+        { key: 'lastName', label: 'Apellido' },
+        { key: 'email', label: 'Correo electrónico' },
+        { key: 'phone', label: 'Teléfono móvil' },
+        { key: 'organization', label: 'Organización' },
+        { key: 'timestamp', label: 'Fecha y hora de envío' }
+      ];
+
+      const container = document.getElementById('summary');
+
+      requiredFields.forEach(field => {
+        const dt = document.createElement('dt');
+        dt.textContent = field.label;
+        const dd = document.createElement('dd');
+        let value = params.get(field.key) || '— No enviado —';
+
+        // if timestamp, format it
+        if (field.key === 'timestamp' && value && value !== '— No enviado —') {
+          try {
+            const d = new Date(value);
+            // format human readable in Spanish
+            value = d.toLocaleString('es-AR', { dateStyle: 'medium', timeStyle: 'short' });
+          } catch (e) { /* leave raw */ }
+        }
+
+        dd.textContent = value;
+        container.appendChild(dt);
+        container.appendChild(dd);
+      });
+
+      // set year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

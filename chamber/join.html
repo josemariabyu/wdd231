@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Formulario de solicitud para unirse a la Cámara de Comercio de Córdoba" />
+  <meta name="author" content="Jose Maria Sanabria" />
+  <title>Únete - Cámara de Comercio de Córdoba</title>
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/style.css">
+
+  <!-- Estilos adicionales específicos para Join (cards + modales + anim) -->
+  <style>
+    /* Layout: en pantallas grandes, form a la izquierda, cards a la derecha */
+    .join-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    @media (min-width: 900px) {
+      .join-container {
+        grid-template-columns: 1fr 360px;
+        align-items: start;
+      }
+    }
+
+    form.card {
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      background: white;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .levels {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .levels {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    .level-card {
+      background: var(--light);
+      border-radius: 0.6rem;
+      padding: 0.8rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      transform-origin: left center;
+      opacity: 0;
+      transform: translateY(12px);
+      /* animation applied on load via JS class 'animate' */
+    }
+
+    .level-card h4 {
+      margin: 0 0 0.25rem;
+      color: var(--primary);
+    }
+
+    .level-card p {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .level-card a.info-link {
+      font-weight: 600;
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    /* Simple entrance animation: fade + slide */
+    .level-card.animate {
+      animation: fadeSlide 600ms forwards cubic-bezier(.2,.8,.2,1);
+    }
+    .level-card.animate.delay-1 { animation-delay: 120ms; }
+    .level-card.animate.delay-2 { animation-delay: 240ms; }
+    .level-card.animate.delay-3 { animation-delay: 360ms; }
+    .level-card.animate.delay-4 { animation-delay: 480ms; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(12px) scale(.995); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Modal styles */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 90;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-backdrop[aria-hidden="false"] { display: flex; }
+
+    .modal {
+      background: white;
+      max-width: 780px;
+      width: 100%;
+      border-radius: 0.6rem;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      outline: none;
+    }
+
+    .modal header {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 1rem;
+    }
+    .modal h3 { margin: 0; color: var(--primary); }
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* Small tweaks for labels wrapping inputs */
+    label.field {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+    label.field input,
+    label.field textarea,
+    label.field select {
+      margin-top: 0.35rem;
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width:600px) {
+      .form-row.two {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .submit-row { text-align: right; margin-top: 0.5rem; }
+    input[type="submit"] {
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 700;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* small helper for required */
+    .required-note { font-size: 0.9rem; color:#555; margin-bottom:0.6rem; }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cámara de Comercio de Córdoba</h1>
+    <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+    <nav id="menu" class="hidden" role="navigation">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="discover.html">Descubrir</a></li>
+        <li><a href="directory.html">Directorio</a></li>
+        <li><a class="active" href="join.html" aria-current="page">Únete</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2 style="text-align:center; color:var(--primary); margin-top:1.25rem;">Solicitud de Membresía</h2>
+
+    <div class="join-container">
+      <!-- FORM -->
+      <form class="card" method="get" action="thankyou.html" novalidate>
+        <p class="required-note">Los campos con * son obligatorios.</p>
+
+        <div class="form-row two" aria-hidden="false">
+          <!-- first name -->
+          <label class="field">
+            Nombre * 
+            <input type="text"
+                   name="firstName"
+                   title="Nombre"
+                   autocomplete="given-name"
+                   required
+                   placeholder="Ej: Juan">
+          </label>
+
+          <!-- last name -->
+          <label class="field">
+            Apellido * 
+            <input type="text"
+                   name="lastName"
+                   title="Apellido"
+                   autocomplete="family-name"
+                   required
+                   placeholder="Ej: Pérez">
+          </label>
+        </div>
+
+        <div class="form-row two">
+          <!-- organization-title -->
+          <label class="field">
+            Cargo en la organización
+            <input type="text"
+                   name="orgTitle"
+                   title="Cargo dentro de la organización"
+                   autocomplete="organization-title"
+                   pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s-]{7,}$"
+                   placeholder="Ej: Gerente de Ventas"
+                   title="Solo letras, espacios y guiones. Mínimo 7 caracteres">
+          </label>
+
+          <!-- organization name -->
+          <label class="field">
+            Nombre de la organización *
+            <input type="text"
+                   name="organization"
+                   title="Nombre de la organización"
+                   autocomplete="organization"
+                   required
+                   placeholder="Ej: Pyme SRL">
+          </label>
+        </div>
+
+        <!-- email -->
+        <label class="field">
+          Correo electrónico *
+          <input type="email"
+                 name="email"
+                 required
+                 title="Correo electrónico"
+                 autocomplete="email"
+                 placeholder="ejemplo@empresa.com">
+        </label>
+
+        <!-- telephone -->
+        <label class="field">
+          Teléfono móvil *
+          <input type="tel"
+                 name="phone"
+                 required
+                 title="Número de teléfono móvil"
+                 autocomplete="tel"
+                 placeholder="+54 9 351 123 4567">
+        </label>
+
+        <!-- membership selection -->
+        <label class="field">
+          Nivel de membresía *
+          <select name="membership" required title="Seleccioná el nivel de membresía">
+            <option value="" disabled selected>-- seleccioná un nivel --</option>
+            <option value="np">NP Membership (No Profit - sin cuota)</option>
+            <option value="bronze">Bronze Membership</option>
+            <option value="silver">Silver Membership</option>
+            <option value="gold">Gold Membership</option>
+          </select>
+        </label>
+
+        <!-- description -->
+        <label class="field">
+          Descripción de la organización
+          <textarea name="description" title="Descripción de la organización" rows="4" placeholder="Describa su negocio o servicios..."></textarea>
+        </label>
+
+        <!-- hidden timestamp -->
+        <input type="hidden" id="timestamp" name="timestamp" value="">
+
+        <div class="submit-row">
+          <input type="submit" value="Enviar solicitud">
+        </div>
+      </form>
+
+      <!-- CARDS / LEVELS -->
+      <aside>
+        <div class="levels" aria-label="Niveles de membresía">
+          <div class="level-card" data-level="np">
+            <h4>NP Membership (np)</h4>
+            <p>Organizaciones sin fines de lucro — Sin cuota.</p>
+            <a href="#" class="info-link" data-modal="modal-np">Ver beneficios</a>
+          </div>
+
+          <div class="level-card" data-level="bronze">
+            <h4>Bronze Membership (bronze)</h4>
+            <p>Entrada económica con beneficios básicos.</p>
+            <a href="#" class="info-link" data-modal="modal-bronze">Ver beneficios</a>
+          </div>
+
+          <div class="level-card" data-level="silver">
+            <h4>Silver Membership (silver)</h4>
+            <p>Beneficios ampliados: eventos y descuentos.</p>
+            <a href="#" class="info-link" data-modal="modal-silver">Ver beneficios</a>
+          </div>
+
+          <div class="level-card" data-level="gold">
+            <h4>Gold Membership (gold)</h4>
+            <p>Mayor visibilidad: promociones, spotlights y prioridad.</p>
+            <a href="#" class="info-link" data-modal="modal-gold">Ver beneficios</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- MODALS -->
+    <div id="modal-np" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-np-title">
+        <header>
+          <h3 id="modal-np-title">NP Membership - Beneficios</h3>
+          <button class="close-btn" aria-label="Cerrar" data-close>✕</button>
+        </header>
+        <div class="modal-body">
+          <p>Beneficios para organizaciones sin fines de lucro: acceso a recursos comunitarios, inclusión en directorio, invitaciones a eventos gratuitos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-bronze" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-bronze-title">
+        <header>
+          <h3 id="modal-bronze-title">Bronze Membership - Beneficios</h3>
+          <button class="close-btn" aria-label="Cerrar" data-close>✕</button>
+        </header>
+        <div class="modal-body">
+          <p>Beneficios Bronze: listado destacado en el directorio, descuentos para eventos y acceso a boletines exclusivos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-silver" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-silver-title">
+        <header>
+          <h3 id="modal-silver-title">Silver Membership - Beneficios</h3>
+          <button class="close-btn" aria-label="Cerrar" data-close>✕</button>
+        </header>
+        <div class="modal-body">
+          <p>Beneficios Silver: todo lo de Bronze + oportunidades de spotlight, formación y promoción en eventos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-gold" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-gold-title">
+        <header>
+          <h3 id="modal-gold-title">Gold Membership - Beneficios</h3>
+          <button class="close-btn" aria-label="Cerrar" data-close>✕</button>
+        </header>
+        <div class="modal-body">
+          <p>Beneficios Gold: máxima visibilidad (spotlights rotativos en home), prioridad en patrocinios, acceso VIP a eventos y formación avanzada.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Cámara de Comercio de Córdoba | Jose Maria Sanabria</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Menu (same behavior as main.js but duplicated here so join works stand-alone)
+    (function() {
+      const menuBtn = document.getElementById('menu-btn');
+      const navMenu = document.getElementById('menu');
+      if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+          const isHidden = navMenu.classList.toggle('hidden');
+          menuBtn.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+      }
+    })();
+
+    // Timestamp: set hidden field when page loads
+    (function() {
+      const ts = document.getElementById('timestamp');
+      if (ts) {
+        // store ISO timestamp (server-friendly) and a human readable copy in data-ts
+        const now = new Date();
+        ts.value = now.toISOString();
+      }
+    })();
+
+    // Modal behavior
+    (function() {
+      const infoLinks = document.querySelectorAll('.info-link');
+      const closeButtons = document.querySelectorAll('[data-close]');
+      const modals = document.querySelectorAll('.modal-backdrop');
+
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.setAttribute('aria-hidden', 'false');
+        const focusable = modal.querySelector('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+        if (focusable) focusable.focus();
+      }
+
+      function closeModal(modal) {
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('.info-link');
+        if (link) {
+          e.preventDefault();
+          const id = link.getAttribute('data-modal');
+          openModal(id);
+        }
+
+        if (e.target.hasAttribute('data-close')) {
+          const backdrop = e.target.closest('.modal-backdrop');
+          if (backdrop) closeModal(backdrop);
+        }
+
+        // close by clicking backdrop (outside modal)
+        if (e.target.classList.contains('modal-backdrop')) {
+          closeModal(e.target);
+        }
+      });
+
+      // close with Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          modals.forEach(m => m.setAttribute('aria-hidden', 'true'));
+        }
+      });
+
+      // Animation: add .animate classes to level-cards on initial load
+      window.addEventListener('load', () => {
+        const cards = document.querySelectorAll('.level-card');
+        cards.forEach((c, i) => {
+          c.classList.add('animate', 'delay-' + (i+1));
+        });
+      });
+    })();
+
+    // set dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
