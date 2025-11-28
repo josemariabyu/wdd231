@@ -27,3 +27,21 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.discover-grid {
+    display: grid;
+    grid-template-areas:
+        "message"
+        "title"
+        "cards";
+    gap: 1rem;
+    padding: 1rem;
+}
+.visitor-msg { grid-area: message; }
+.discover-title { grid-area: title; text-align: center; }
+.cards { 
+    grid-area: cards;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
