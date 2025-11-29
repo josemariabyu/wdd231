@@ -29,19 +29,35 @@
 }
 .discover-grid {
     display: grid;
-    grid-template-areas:
-        "message"
-        "title"
-        "cards";
     gap: 1rem;
     padding: 1rem;
 }
-.visitor-msg { grid-area: message; }
-.discover-title { grid-area: title; text-align: center; }
-.cards { 
-    grid-area: cards;
+
+.cards {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
 }
+
+.card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Hover effect only for desktop */
+@media (min-width: 640px) {
+    .card img:hover {
+        transform: scale(1.05);
+        transition: 0.3s ease;
+        filter: brightness(0.9);
+    }
+}
+
 

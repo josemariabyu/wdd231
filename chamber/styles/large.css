@@ -1,11 +1,4 @@
 @media (min-width: 1025px) {
-    .discover-grid {
-        grid-template-areas:
-            "message message message"
-            "title title title"
-            "cards cards cards";
-    }
-
     .cards {
         grid-template-columns: repeat(4, 1fr);
     }

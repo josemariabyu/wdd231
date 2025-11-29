@@ -1,0 +1,75 @@
+.discover-grid {
+  width: 90%;
+  margin: auto;
+  padding: 1rem 0;
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* MOBILE – 1 columna */
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TABLET / MEDIUM – 2 columnas */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* DESKTOP – 4 columnas */
+@media (min-width: 1025px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* hover efecto solo en desktop */
+  .card img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  height: auto;
+}
+
+.card h2 {
+  margin: 0.8rem 0 0.4rem;
+}
+
+.card address {
+  font-style: italic;
+  color: #555;
+}
+
+.card p {
+  margin: 0.5rem 0;
+}
+
+.card .learn-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #0A4D68;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
