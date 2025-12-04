@@ -8,22 +8,30 @@
   <meta name="author" content="Jose Maria Sanabria">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="DigitalHub Store">
+  <meta property="og:title" content="DigitalHub Store — Recursos digitales para creativos">
   <meta property="og:description" content="Explora y descarga recursos digitales: iconos, wallpapers y plantillas.">
-  <meta property="og:type" content="website">
   <meta property="og:image" content="https://josemariabyu.github.io/wdd231/websiteproject/images/og-image.png">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://josemariabyu.github.io/wdd231/websiteproject/index.html">
+
+  <!-- Google Fonts (obligatorio) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/large.css">
+
   <script type="module" src="scripts/main.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
       <h1 class="brand">DigitalHub Store</h1>
-      <button id="menu-btn" aria-expanded="false" aria-controls="nav-menu">☰</button>
+      <button id="menu-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Open Menu">☰</button>
+
       <nav id="nav-menu" class="main-nav" hidden>
         <a href="index.html">Home</a>
         <a href="products.html">Products</a>
