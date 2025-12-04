@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DigitalHub Store — Home</title>
+  <meta name="description" content="DigitalHub Store - descarga iconos, plantillas y recursos digitales." />
+  <meta name="author" content="Jose Maria Sanabria" />
+  <meta property="og:title" content="DigitalHub Store" />
+  <meta property="og:description" content="Explora y descarga recursos digitales: iconos, wallpapers y plantillas." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/large.css" />
+  <script type="module" src="scripts/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">DigitalHub Store</h1>
+      <button id="menu-btn" aria-expanded="false" aria-controls="nav-menu">☰</button>
+      <nav id="nav-menu" class="main-nav" hidden>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Recursos digitales para creativos</h2>
+      <p>Plantillas, iconos, wallpapers y pequeñas herramientas listas para descargar.</p>
+      <a class="btn" href="products.html">Ver productos</a>
+    </section>
+
+    <section aria-labelledby="featured-heading" class="featured">
+      <h2 id="featured-heading">Destacados</h2>
+      <div id="featured-grid" class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> DigitalHub Store | Jose Maria Sanabria</p>
+    <p><a href="attributions.html">Attributions</a></p>
+  </footer>
+
+  <template id="product-card-template">
+    <article class="product-card">
+      <img alt="" loading="lazy" class="product-image">
+      <h3 class="product-title"></h3>
+      <p class="product-desc"></p>
+      <p class="product-meta"></p>
+      <button class="btn details-btn">Details</button>
+    </article>
+  </template>
+</body>
+</html>

@@ -1,0 +1,3 @@
+/* additional larger-screen tweaks */
+.hero{display:flex;align-items:center;justify-content:space-between}
+.hero h2{font-size:1.6rem}

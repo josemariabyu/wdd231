@@ -1,0 +1,7 @@
+[
+  { "name": "EcoRide 350", "type": "Urbana", "range": 40, "image": "1.jpg" },
+  { "name": "VoltX Trail", "type": "Montaña", "range": 65, "image": "2.jpg" },
+  { "name": "CityFlow Pro", "type": "Urbana", "range": 55, "image": "3.jpg" },
+  { "name": "ThunderBike X", "type": "Montaña", "range": 70, "image": "4.jpg" },
+  { "name": "CordobaRide 500", "type": "Híbrida", "range": 50, "image": "5.jpg" }
+]

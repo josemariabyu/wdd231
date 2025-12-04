@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DigitalHub Store — Products</title>
+  <meta name="description" content="Listado de productos digitales en DigitalHub Store." />
+  <meta name="author" content="Jose Maria Sanabria" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/large.css" />
+  <script type="module" src="scripts/products.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">DigitalHub Store</h1>
+      <button id="menu-btn" aria-expanded="false" aria-controls="nav-menu">☰</button>
+      <nav id="nav-menu" class="main-nav" hidden>
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Products</h2>
+    <div class="controls">
+      <label for="search">Search:</label>
+      <input id="search" type="search" placeholder="buscar..." />
+      <button id="view-toggle" class="btn">Toggle view</button>
+    </div>
+
+    <section id="products-grid" class="product-grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> DigitalHub Store | Jose Maria Sanabria</p>
+    <p><a href="attributions.html">Attributions</a></p>
+  </footer>
+
+  <!-- Modal structure -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content" role="document">
+      <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+      <h3 id="modal-title"></h3>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <template id="product-card-template">
+    <article class="product-card">
+      <img alt="" loading="lazy" class="product-image">
+      <h3 class="product-title"></h3>
+      <p class="product-desc"></p>
+      <p class="product-meta"></p>
+      <button class="btn details-btn">Details</button>
+    </article>
+  </template>
+</body>
+</html>
